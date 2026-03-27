@@ -38,47 +38,42 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 var docMod = document.lastModified; // loads last modified time stamp into docMod variable
 alert("This file last modified " + docMod); // generates alert box with time stamp. If annoying, comment out this entire line.
 console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
+
 	
 function draw_b(){ //finds the <canvas> element in the code
-	var canvas = document.getElementById("c"); //this finds a canvas element (b) 
-	var context = canvas.getContext("2d"); //this provides context for the fact that our canvas is 2d, not 3d.
-	
-	context.fillStyle = "#ccc";
-	context.fillRect(50, 25, 150, 100); //rectangle size and fill (previous line)
-
+	var c_canvas = document.getElementById("c"); //this finds the canvas element in the dom 
+	var c_context = c_canvas.getContext("2d"); //this provides context for the fact that our canvas is 2d, not 3d for drawing
+	c_context.fillStyle = "#ccc";
+	c_context.fillRect(50, 25, 150, 100); //rectangle size and fill (previous line)
 }
 	
-function clearCanvas(){
-	var canvas = document.getElementById("c");
-	var context = canvas.getContext("2d");
-	context.clearRect(0,0,canvas.width,canvas.height);
-
-	context.strokeStyle = "#000";
-	context.lineWidth=2; 
-	context.strokeRect(0,0,canvas.width,canvas.height);
-	
-}
 function addName(){
-	var canvas = document.getElementById("c");
-	var context = canvas.getContext("2d");
+	var c_canvas = document.getElementById("c");
+	var context = c_canvas.getContext("2d");
 	var name = prompt ("Enter your name:");
 	if (name) {
 		context.font = "bold 12px sans-serif";
-		context.fillStyle = "#000";
-		context.textAlign = "right";
-		context.textBaseline = "bottom";
-		context.fillText(name, canvas.width - 10, canvas.height -10);
+		context.fillText(name, 400, 350);
 		}
 }
 
 function uploadImage() {
-	var canvas = document.getElementById("c");
-	var context - canvas.getContext("2d");
+	var c_canvas = document.getElementById("c");
+	var context = c_canvas.getContext("2d");
 	var cat = document.getElementById("cat");
 	context.drawImage(cat, 50, 50);
 }
-</script>
+	
+function clearCanvas(){
+	var c_canvas = document.getElementById("c");
+	var context = c_canvas.getContext("2d");
+	context.clearRect(0,0,500,375);
+	context.strokeRect(0,0,500,375);
+	
+}
 
+
+</script>
 
 
 <style>	
@@ -108,24 +103,20 @@ function uploadImage() {
 	
 <div id="content" class="w3-container">
 	<p>Content goes here.</p>
-	
 	<canvas id ="c" width= "500" height = "375"></canvas>
+	
 	<button onclick="draw_b()">Draw</button>
 	<button onclick="addName()">Add Name</button>
 	<button onclick="clearCanvas()">Clear</button>
 	<button onclick="uploadImage()">Upload</button>
-	<input type="file" id="upload">
 
 	<img id="cat" src = "images/cat.png" alt="sleeping cat" width = "177" height = "113">
 	
 	<script>
 		window.onload = function(){
-			var canvas = document.getElementById("c");
-			var context = canvas.getContext("2d");
-
-			context.strokeStyle = "#000";
-			context.lineWidth = 2;
-			context.strokeRect(0,0,canvas.width,canvas.height);
+			var c_canvas = document.getElementById("c");
+			var context = c_canvas.getContext("2d");
+			context.strokeRect(0,0,500, 375);
 	
 	};
 	</script>
