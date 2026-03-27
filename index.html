@@ -61,7 +61,7 @@ function uploadImage() { //this function is responsible for uploading the select
 	var c_canvas = document.getElementById("c"); //finds canvas element in dom -- according to github.io resource
 	var context = c_canvas.getContext("2d"); //provides context for drawing (2d, not 3d)
 	var cat = new Image(); //calls upon the image to be uploaded
-	cat.src = "cat.png";
+	cat.src = "cat.png"; //defines the image as it is named in github database so it can be located 
 	cat.onload = function() { //runs a function to ulpaod the image
 		context.drawImage(cat, 0, 0); //tells the program to upload the cat image, at that location 
 	};
