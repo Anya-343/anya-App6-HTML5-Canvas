@@ -26,11 +26,11 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 -->
 	
    <head> 
-      <title>App6---HTML5-Canvas</title>  
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>App 6 Canvas Assignment -- ANYA GUDIPATI</title>  <!--tital of the page, renamed slightly-->
+      <meta name="viewport" content="width=device-width, initial-scale=1"> <!--takes into account the width of the device for the scaling of the features on the screen-->
       <meta name="apple-mobile-web-app-capable" content="yes"> <!--makes the app suitable for mobible devices-->
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
+      <link rel="stylesheet" href="w3.css"> <!--this tells the code to reference the w3.css file-->
+      <link rel="stylesheet" href="w3-colors-flat.css"> <!-- this tells the code to reference the w3-colors-flat.css file-->
    </head> 
 
 
@@ -40,35 +40,35 @@ var docMod = document.lastModified; // loads last modified time stamp into docMo
 console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
 
 	
-function draw_b(){ //finds the <canvas> element in the code
+function draw_b(){ //this function allows the rectangle to be drawn on the screen when the draw button is selected
 	var c_canvas = document.getElementById("c"); //this finds the canvas element in the dom 
 	var c_context = c_canvas.getContext("2d"); //this provides context for the fact that our canvas is 2d, not 3d for drawing
-	c_context.fillStyle = "#ccc";
-	c_context.fillRect(50, 25, 150, 100); //rectangle size and fill (previous line)
+	c_context.fillStyle = "#ccc"; //this selects the shade of the rectangle as it is drawn on the canvas
+	c_context.fillRect(50, 25, 150, 100); //determines rectangle size and location on the canvas
 }
 	
-function addName(){
-	var c_canvas = document.getElementById("c");
-	var context = c_canvas.getContext("2d");
-	var name = prompt ("Enter your name:");
-	if (name) {
-		context.font = "bold 12px sans-serif";
-		context.fillText(name, 400, 350);
+function addName(){ //this function writes the individual's name on the screen 
+	var c_canvas = document.getElementById("c"); //finds canvas element in dom 
+	var context = c_canvas.getContext("2d"); //provides context for drawing (2d, not 3d)
+	var name = prompt ("Enter your name:");//allows users to enter their names ****disclaimer: this portion is from a resource I found online because I was unable to figure out how to code this with the resources we were given.
+	if (name) { //gives the option to enter their name (again from an outside resource)
+		context.font = "bold 12px sans-serif"; //decides size and font of lettering for the name that's entered, to be displayed
+		context.fillText(name, 400, 350); //this decides what's written (name) and where 
 		}
 }
 
-function uploadImage() {
-	var c_canvas = document.getElementById("c");
-	var context = c_canvas.getContext("2d");
-	var cat = document.getElementById("cat");
-	context.drawImage(cat, 50, 50);
+function uploadImage() { //this function is responsible for uploading the selected cat image onto the screen 
+	var c_canvas = document.getElementById("c"); //finds canvas element in dom -- according to github.io resource
+	var context = c_canvas.getContext("2d"); //provides context for drawing (2d, not 3d)
+	var cat = document.getElementById("cat"); //this calls upon the image, which is referred to as cat (variable)
+	context.drawImage(cat, 50, 50); //tells the program to upload the cat image, at that location 
 }
 	
-function clearCanvas(){
-	var c_canvas = document.getElementById("c");
-	var context = c_canvas.getContext("2d");
-	context.clearRect(0,0,500,375);
-	context.strokeRect(0,0,500,375);
+function clearCanvas(){ //this function allows the canvas to be cleared 
+	var c_canvas = document.getElementById("c"); //finds canvas element in the dom 
+	var context = c_canvas.getContext("2d"); //provides context for drawing (2d, not 3d)
+	context.clearRect(0,0,500,375); //clears the rectangle that was drawn by the draw function 
+	context.strokeRect(0,0,500,375); //clears the text and the image from the canvas
 	
 }
 
@@ -76,16 +76,17 @@ function clearCanvas(){
 </script>
 
 
-<style>	
+<style> 
+	/* the entire section below controls the formatting of the page, including margins and positioning of the program within the device's interace*/
 .body {
-     margin: 0em;
+     margin: 0em; /* sets the margin */
 }
 .page {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
+    width: 100vw; /* width of the page */
+    height: 100vh; /* height of page*/
+    position: fixed; /*decides whether position of canvas is variable or not */
+    top: 0; 
+    left: -100vw; 
     overflow-y: auto;
     z-index: 0;
     background-color: hsl(0,0%,100%);
@@ -98,25 +99,25 @@ function clearCanvas(){
 
 <body>
 <div id="header" class="w3-container w3-flat-carrot">
-	<h1>App6---HTML5-Canvas</h1>
+	<h1>App 6 Canvas!</h1> <!--creates a heading at the top of the screen, renamed from the original-->
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Content goes here.</p>
-	<canvas id ="c" width= "500" height = "375"></canvas>
+	<p>Draw a rectangle, write your name, or upload an image of a cat below!</p> <!--comment that describes where the content will be placed, changed!-->
+	<canvas id ="c" width= "500" height = "375"></canvas> <!--decides the dimensions of the canvas-->
 	
-	<button onclick="draw_b()">Draw</button>
-	<button onclick="addName()">Add Name</button>
-	<button onclick="clearCanvas()">Clear</button>
-	<button onclick="uploadImage()">Upload</button>
+	<button onclick="draw_b()">Draw</button> <!--runs the draw function when this button is clcked, rectangle will appear on the screen-->
+	<button onclick="addName()">Add Name</button> <!--runs the name function when this button is clicked, user will be prompted to enter name which will then be displayed-->
+	<button onclick="clearCanvas()">Clear</button> <!--runs the function to clear canvas-->
+	<button onclick="uploadImage()">Upload</button> <!--runs the function to upload the cat image-->
 
-	<img id="cat" src = "cat.png" alt="sleeping cat" width = "177" height = "113">
+	<img id="cat" src = "cat.png" alt="sleeping cat" width = "177" height = "113"> <!--image id for the cat image, allows it to be called by the program and uploaded when the button is clicked-->
 	
 	<script>
-		window.onload = function(){
-			var c_canvas = document.getElementById("c");
-			var context = c_canvas.getContext("2d");
-			context.strokeRect(0,0,500, 375);
+		window.onload = function(){ //function that ensures the canvas is outlined as soon as the page loads 
+			var c_canvas = document.getElementById("c"); //finds the canvas variable and loads it onto the screen 
+			var context = c_canvas.getContext("2d"); //provides context for the program, that the illustrations will be in 2d and not 3d
+			context.strokeRect(0,0,500, 375); //gives the dimensions of the outline 
 	
 	};
 	</script>
@@ -128,7 +129,7 @@ function clearCanvas(){
 	
 
 
-<footer class="w3-bottom w3-container w3-flat-carrot">
+<footer class="w3-bottom w3-container w3-flat-carrot"> 
 	<p>DIY!</p>
 </footer>
 
