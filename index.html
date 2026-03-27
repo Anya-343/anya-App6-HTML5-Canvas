@@ -60,8 +60,11 @@ function addName(){ //this function writes the individual's name on the screen
 function uploadImage() { //this function is responsible for uploading the selected cat image onto the screen 
 	var c_canvas = document.getElementById("c"); //finds canvas element in dom -- according to github.io resource
 	var context = c_canvas.getContext("2d"); //provides context for drawing (2d, not 3d)
-	var cat = document.getElementById("cat"); //this calls upon the image, which is referred to as cat (variable)
-	context.drawImage(cat, 50, 50); //tells the program to upload the cat image, at that location 
+	var cat = new Image(); //calls upon the image to be uploaded
+	cat.src = "cat.png";
+	cat.onload = function() { //runs a function to ulpaod the image
+		context.drawImage(cat, 0, 0); //tells the program to upload the cat image, at that location 
+	};
 }
 	
 function clearCanvas(){ //this function allows the canvas to be cleared 
