@@ -40,12 +40,11 @@ alert("This file last modified " + docMod); // generates alert box with time sta
 console.log("This file last modified " + docMod); // generates message in javaScript console (found in developers tools) with time stamp. 
 	
 function draw_b(){ //finds the <canvas> element in the code
-	var b_canvas = document.getElementById("b"); //this finds a canvas element (b) 
-	var b_context = b_canvas.getContext("2d"); //this provides context for the fact that our canvas is 2d, not 3d.
-	b_context.fillRect(50, 25, 150, 100); //this draws the rectangle with the correct fill setting
+	var canvas = document.getElementById("c"); //this finds a canvas element (b) 
+	var context = canvas.getContext("2d"); //this provides context for the fact that our canvas is 2d, not 3d.
+	context.fillRect(50, 25, 150, 100); //this draws the rectangle with the correct fill setting
 
-	var c_canvas = document.getElementById("c");
-	var context = c_canvas.getContext("2d");
+	context.beginPath(); //tells the program to begin the illustration at this point 
 
 	for (var x = 0.5; x < 500; x += 10) {
 		context.moveTo(x,0);
@@ -56,7 +55,7 @@ function draw_b(){ //finds the <canvas> element in the code
 		context.moveTo(0,y);
 		context.lineTo(500,y);
 		}
-	
+
 	context.strokeStyle = "#eee";
 	context.stroke();
 
@@ -91,8 +90,22 @@ function draw_b(){ //finds the <canvas> element in the code
 		
 	}
 
-
+function clearCanvas(){
+	var canvas = document.getElementById("c");
+	var context = canvas.getContext("2d");
+	context.clearRect(0,0,canvas.width,canvas.height);
 }
+function addName(){
+	var canvas = document.getElementById("c");
+	var context = canvas.getContext("2d");
+	var name = prompt ("Enter your name:");
+	if (name) {
+			context.font = "bold 12px sans-serif";
+			context.fillStyle = "#000";
+			context.fillText(name, 100, 100);
+		}
+}
+	
 </script>
 
 
@@ -125,8 +138,12 @@ function draw_b(){ //finds the <canvas> element in the code
 <div id="content" class="w3-container">
 	<p>Content goes here.</p>
 	
-		<canvas id="a" width="300" height = "225"></canvas>
 	<canvas id ="c" width= "500" height = "375"></canvas>
+	<button onclick="draw_b()">Draw</button>
+	<button onclick="addName()">Add Name</button>
+	<button onclick="clearCanvas()">Clear</button>
+	<input type="file" id="upload">
+	
 
 	<img id="cat" src = "images/cat.png" alt="sleeping cat" width = "177" height = "113">
 	<canvas id = "e" width ="177" height = "113"></canvas>
@@ -137,7 +154,7 @@ function draw_b(){ //finds the <canvas> element in the code
 				var canvas = document.getElementById("e");
 				var context = canvas.getContext("2d");
 				var cat = document.getElementById ("cat");
-		
+				context.drawImage(cat, 0,0);
 			};
 	</script>
 				
