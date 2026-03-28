@@ -63,7 +63,7 @@ function uploadImage() { //this function is responsible for uploading the select
 	var cat = new Image(); //calls upon the image to be uploaded
 	cat.src = "cat.png"; //defines the image as it is named in github database so it can be located 
 	cat.onload = function() { //runs a function to ulpaod the image
-		context.drawImage(cat, 0, 0); //tells the program to upload the cat image, at that location 
+		context.drawImage(cat, 0, 0, 500, 375); //tells the program to upload the cat image, at that location 
 	};
 }
 	
@@ -114,7 +114,7 @@ function clearCanvas(){ //this function allows the canvas to be cleared
 	<button onclick="clearCanvas()">Clear</button> <!--runs the function to clear canvas-->
 	<button onclick="uploadImage()">Upload</button> <!--runs the function to upload the cat image-->
 
-	<img id="cat" src = "cat.png" alt="sleeping cat" width = "177" height = "113"> <!--image id for the cat image, allows it to be called by the program and uploaded when the button is clicked-->
+	<img id="cat" src = "cat.png" alt="sleeping cat" width = "177" height = "113" style="display:none"> <!--image id for the cat image, allows it to be called by the program and uploaded when the button is clicked-->
 	
 	<script>
 		window.onload = function(){ //function that ensures the canvas is outlined as soon as the page loads 
